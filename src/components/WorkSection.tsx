@@ -2,18 +2,18 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ExternalLink } from "lucide-react";
 
 const mediaTalks = [
-  { title: "Women in Blockchain Panel Discussion", url: "#" },
-  { title: "EDCON 2021 Keynote | The Future of Ethereum with EIPs", url: "#" },
-  { title: "Opportunities in Web3 @ ETHWMN", url: "#" },
-  { title: "Founder, EtherWorld & Herder-in-Chief, Ethereum Cat Herders", url: "#" },
-  { title: "The Importance of Education & Diversity in Protocol Development | EDCON 2025", url: "#" },
+  { title: "Women in Blockchain Panel Discussion", url: "https://www.youtube.com/watch?v=f1j2FwKgk7Q" },
+  { title: "EDCON 2021 Keynote | The Future of Ethereum with EIPs", url: "https://www.youtube.com/watch?v=5PmGt1B-SVc" },
+  { title: "Opportunities in Web3 @ ETHWMN", url: "https://www.youtube.com/watch?v=AbCzQtQWlSE" },
+  { title: "Founder, EtherWorld & Herder-in-Chief, Ethereum Cat Herders", url: "https://www.youtube.com/watch?v=GpeOMZQCiLI" },
+  { title: "The Importance of Education & Diversity in Protocol Development | EDCON 2025", url: "https://www.youtube.com/watch?v=uVj7JyTbLbg" },
 ];
 
 const peepanEIP = [
-  { title: "PEEPanEIP #142 — EIP-7706 Separate Gas Type for Calldata (with Vitalik Buterin)", url: "#" },
-  { title: "PEEPanEIP #154 — EIP-7892 Blob Parameter Only Hardforks (with Mark Mackey)", url: "#" },
-  { title: "PEEPanEIP #46 — Verkle Tries for Ethereum State (with Dankrad Feist)", url: "#" },
-  { title: "PEEPanEIP #153 — EIP-7939 CLZ Opcode (with Vectorized)", url: "#" },
+  { title: "PEEPanEIP #142 — EIP-7706 Separate Gas Type for Calldata (with Vitalik Buterin)", url: "https://www.youtube.com/watch?v=c3TV6OhjSfc" },
+  { title: "PEEPanEIP #154 — EIP-7892 Blob Parameter Only Hardforks (with Mark Mackey)", url: "https://www.youtube.com/watch?v=Q58Wm5gtiJY" },
+  { title: "PEEPanEIP #46 — Verkle Tries for Ethereum State (with Dankrad Feist)", url: "https://www.youtube.com/watch?v=RGJOQHzg3UQ" },
+  { title: "PEEPanEIP #153 — EIP-7939 CLZ Opcode (with Vectorized)", url: "https://www.youtube.com/watch?v=MuBxmqDyw_c" },
 ];
 
 const acdHighlights = [
