@@ -3,33 +3,33 @@ import { ExternalLink } from "lucide-react";
 const projects = [
   {
     title: "Avarch LLC",
-    description: "A blockchain research and consulting firm focused on Ethereum protocol development and community engagement.",
-    url: "https://avarch.org",
+    description: "Founded in 2017, Avarch LLC focuses on blockchain awareness, research, education, and ecosystem support. Its initiatives include EtherWorld, BlockAction, and EIPsInsight.",
+    url: "https://avarch.org/",
   },
   {
     title: "EtherWorld",
-    description: "An information portal covering Ethereum ecosystem news, EIPs, and protocol upgrades.",
-    url: "https://etherworld.co",
+    description: "One of the leading blockchain publishing platforms covering Ethereum protocol development, upgrades, ecosystem research, and technical insights since 2017.",
+    url: "https://www.etherworld.co/",
   },
   {
     title: "ECH Institute",
-    description: "A nonprofit organization dedicated to Ethereum protocol education and community coordination.",
-    url: "https://echinstitute.org",
+    description: "Decentralized project management group supporting Ethereum protocol development.",
+    url: "https://www.ethereumcatherders.com/",
   },
   {
     title: "BlockAction Explorer",
-    description: "A blockchain explorer tool providing insights into Ethereum network activity and transactions.",
-    url: "https://blockaction.io",
+    description: "Blockchain wallet and transaction platform developed by Avarch in association with BitsBeat. Provides secure wallet creation, real-time transaction tracking, and simplified crypto interactions.",
+    url: "https://avarch.org/blockaction.html",
   },
   {
     title: "EIPsInsight",
-    description: "A comprehensive dashboard tracking the progress and status of Ethereum Improvement Proposals.",
-    url: "https://eipsinsight.com",
+    description: "Data analytics dashboard for Ethereum Improvement Proposals, offering statistics, historical insights, and monthly reporting.",
+    url: "https://eipsinsight.com/",
   },
   {
     title: "Women in Ethereum Protocol",
-    description: "An initiative promoting diversity and inclusion in Ethereum's technical governance and development.",
-    url: "https://womeninethereumprotocol.com",
+    description: "Initiative focused on increasing diversity and participation of women in Ethereum protocol development through mentorship, awareness, and community building.",
+    url: "https://x.com/wiepteam",
   },
 ];
 

@@ -9,23 +9,23 @@ const ContactSection = () => (
           Let's Connect
         </h2>
         <p className="text-muted-foreground leading-relaxed mb-8">
-          Whether you want to collaborate on Ethereum protocol development, explore educational partnerships, or just say hello — feel free to reach out.
+          For collaborations, speaking engagements, research initiatives, or protocol coordination discussions:
         </p>
 
         <div className="space-y-3 mb-8">
           <a
-            href="mailto:pooja@echinstitute.org"
+            href="mailto:contact@etherworld.co"
             className="flex items-center gap-3 text-muted-foreground hover:text-foreground transition-colors"
           >
             <Mail size={18} />
-            <span>pooja@echinstitute.org</span>
+            <span>contact@etherworld.co</span>
           </a>
           <a
-            href="mailto:pooja@avarch.org"
+            href="mailto:team@ethcatherders.com"
             className="flex items-center gap-3 text-muted-foreground hover:text-foreground transition-colors"
           >
             <Mail size={18} />
-            <span>pooja@avarch.org</span>
+            <span>team@ethcatherders.com</span>
           </a>
         </div>
 

@@ -12,20 +12,23 @@ const AboutSection = () => (
         {/* Left */}
         <div className="lg:w-2/5">
           <h2 className="text-4xl md:text-5xl font-bold text-foreground leading-tight">
-            Building Ethereum since 2016
+            Building Ethereum Since 2016
           </h2>
         </div>
 
         {/* Right */}
         <div className="lg:w-3/5 space-y-5 text-muted-foreground leading-relaxed">
           <p>
-            Pooja Ranjan has been an active contributor to the Ethereum ecosystem since 2016. She is the founder of Avarch LLC and EtherWorld, and currently serves as the President of ECH Institute Inc.
+            Pooja became part of the blockchain community in 2016 when she began learning about the Ethereum blockchain.
           </p>
           <p>
-            Her work focuses on protocol coordination, community education, and making Ethereum's technical governance more accessible. She has contributed to over 100 EIPs and played a key role in coordinating multiple network upgrades.
+            As President at ECH Institute Inc. and Founder of Avarch LLC, she has dedicated her career to supporting Ethereum protocol development and advancing blockchain awareness globally.
           </p>
           <p>
-            Through initiatives like EIPsInsight and Women in Ethereum Protocol, she advocates for transparency, inclusivity, and broader participation in Ethereum's development process.
+            She founded Avarch LLC in 2017, with EtherWorld as its first initiative. Through technical publishing, ecosystem updates, and protocol coverage, EtherWorld has grown into one of the leading independent blockchain media platforms.
+          </p>
+          <p>
+            Pooja actively contributes to the Ethereum Improvement Proposal Improvement Process (EIPIP) and EIP analytics, publishing monthly EIP statistics reports. Through EIPsInsight and multiple coordination efforts, she continues supporting Ethereum network upgrades and protocol governance initiatives.
           </p>
         </div>
       </div>
