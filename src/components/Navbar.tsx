@@ -16,7 +16,7 @@ const Navbar = () => {
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur-md">
       <div className="max-w-7xl mx-auto px-6 lg:px-10">
         {/* Top row: social icons */}
-        <div className="flex justify-end py-2">
+        <div className="hidden md:flex justify-end py-2">
           <SocialIcons />
         </div>
 
