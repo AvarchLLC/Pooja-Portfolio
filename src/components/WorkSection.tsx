@@ -20,22 +20,31 @@ const acdHighlights = [
   { title: "AllCoreDevs Call Highlights & Summaries", url: "#" },
 ];
 
-const LinkList = ({ items }: { items: { title: string; url: string }[] }) => (
-  <div className="space-y-3">
-    {items.map((item, i) => (
-      <a
-        key={i}
-        href={item.url}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="group flex items-center justify-between p-4 rounded-lg bg-card border border-border hover:border-muted-foreground/30 transition-all duration-300"
-      >
-        <span className="text-sm text-muted-foreground group-hover:text-foreground transition-colors">
-          {item.title}
-        </span>
-        <ExternalLink size={14} className="text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0 ml-3" />
-      </a>
-    ))}
+const getYouTubeId = (url: string) => {
+  const match = url.match(/(?:v=|\/)([\w-]{11})/);
+  return match ? match[1] : null;
+};
+
+const VideoGrid = ({ items }: { items: { title: string; url: string }[] }) => (
+  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+    {items.map((item, i) => {
+      const videoId = getYouTubeId(item.url);
+      return (
+        <div key={i} className="space-y-2">
+          <div className="aspect-video rounded-lg overflow-hidden border border-border bg-card">
+            <iframe
+              src={`https://www.youtube.com/embed/${videoId}`}
+              title={item.title}
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+              className="w-full h-full"
+              loading="lazy"
+            />
+          </div>
+          <p className="text-sm text-muted-foreground">{item.title}</p>
+        </div>
+      );
+    })}
   </div>
 );
 
@@ -56,19 +65,19 @@ const WorkSection = () => (
           <p className="text-muted-foreground mb-6 text-sm">
             Presentations and discussions on Ethereum protocol development, blockchain education, and community coordination.
           </p>
-          <LinkList items={mediaTalks} />
+          <VideoGrid items={mediaTalks} />
         </TabsContent>
         <TabsContent value="peepaneip">
           <p className="text-muted-foreground mb-6 text-sm">
             Educational series explaining Ethereum Improvement Proposals and their real-world protocol impact.
           </p>
-          <LinkList items={peepanEIP} />
+          <VideoGrid items={peepanEIP} />
         </TabsContent>
         <TabsContent value="acd">
           <p className="text-muted-foreground mb-6 text-sm">
             Publishing highlights and summaries from Ethereum All Core Developers calls, supporting transparency in protocol discussions and upgrade coordination.
           </p>
-          <LinkList items={acdHighlights} />
+          <VideoGrid items={acdHighlights} />
         </TabsContent>
       </Tabs>
     </div>
