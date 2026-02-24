@@ -16,22 +16,18 @@ const peepanEIP = [
   { title: "PEEPanEIP #153 — EIP-7939 CLZ Opcode (with Vectorized)", url: "https://www.youtube.com/watch?v=MuBxmqDyw_c" },
 ];
 
-const acdHighlights = [
-  { title: "AllCoreDevs Call Highlights & Summaries", url: "#" },
-];
-
 const getYouTubeId = (url: string) => {
   const match = url.match(/(?:v=|\/)([\w-]{11})/);
   return match ? match[1] : null;
 };
 
 const VideoGrid = ({ items }: { items: { title: string; url: string }[] }) => (
-  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+  <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
     {items.map((item, i) => {
       const videoId = getYouTubeId(item.url);
       return (
-        <div key={i} className="space-y-2">
-          <div className="aspect-video rounded-lg overflow-hidden border border-border bg-card">
+        <div key={i} className="space-y-3">
+          <div className="aspect-video rounded-xl overflow-hidden border border-border bg-secondary shadow-sm">
             <iframe
               src={`https://www.youtube.com/embed/${videoId}`}
               title={item.title}
@@ -41,7 +37,7 @@ const VideoGrid = ({ items }: { items: { title: string; url: string }[] }) => (
               loading="lazy"
             />
           </div>
-          <p className="text-sm text-muted-foreground">{item.title}</p>
+          <p className="text-sm text-muted-foreground font-medium">{item.title}</p>
         </div>
       );
     })}
@@ -58,43 +54,46 @@ const WorkSection = () => {
   }, []);
 
   return (
-  <section id="work" className="py-24">
-    <div className="max-w-6xl mx-auto px-6">
-      <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
-        Shaping the Ethereum Ecosystem
-      </h2>
+    <section id="work" className="py-24">
+      <div className="max-w-7xl mx-auto px-6 lg:px-10">
+        <h2
+          className="text-4xl md:text-5xl font-bold text-foreground mb-4"
+          style={{ fontFamily: "'Playfair Display', serif" }}
+        >
+          Shaping the Ethereum Ecosystem
+        </h2>
 
-      <Tabs defaultValue="media" className="w-full mt-8">
-        <TabsList className="bg-secondary mb-8">
-          <TabsTrigger value="media">Media & Talks</TabsTrigger>
-          <TabsTrigger value="peepaneip">PEEPanEIP Series</TabsTrigger>
-          <TabsTrigger value="acd">AllCoreDevs Highlights</TabsTrigger>
-        </TabsList>
-        <TabsContent value="media">
-          <p className="text-muted-foreground mb-6 text-sm">
-            Presentations and discussions on Ethereum protocol development, blockchain education, and community coordination.
-          </p>
-          <VideoGrid items={mediaTalks} />
-        </TabsContent>
-        <TabsContent value="peepaneip">
-          <p className="text-muted-foreground mb-6 text-sm">
-            Educational series explaining Ethereum Improvement Proposals and their real-world protocol impact.
-          </p>
-          <VideoGrid items={peepanEIP} />
-        </TabsContent>
-        <TabsContent value="acd">
-          <p className="text-muted-foreground mb-6 text-sm">
-            Publishing highlights and summaries from Ethereum All Core Developers calls, supporting transparency in protocol discussions and upgrade coordination.
-          </p>
-          <div className="max-w-xl">
-            <blockquote className="twitter-tweet" data-theme="dark">
-              <a href="https://x.com/poojaranjan19/status/1958529528927515092">Loading tweet...</a>
-            </blockquote>
-          </div>
-        </TabsContent>
-      </Tabs>
-    </div>
-  </section>
+        <Tabs defaultValue="media" className="w-full mt-10">
+          <TabsList className="bg-secondary mb-10 p-1 rounded-full">
+            <TabsTrigger value="media" className="rounded-full px-5">Media & Talks</TabsTrigger>
+            <TabsTrigger value="peepaneip" className="rounded-full px-5">PEEPanEIP Series</TabsTrigger>
+            <TabsTrigger value="acd" className="rounded-full px-5">AllCoreDevs</TabsTrigger>
+          </TabsList>
+          <TabsContent value="media">
+            <p className="text-muted-foreground mb-8">
+              Presentations and discussions on Ethereum protocol development, blockchain education, and community coordination.
+            </p>
+            <VideoGrid items={mediaTalks} />
+          </TabsContent>
+          <TabsContent value="peepaneip">
+            <p className="text-muted-foreground mb-8">
+              Educational series explaining Ethereum Improvement Proposals and their real-world protocol impact.
+            </p>
+            <VideoGrid items={peepanEIP} />
+          </TabsContent>
+          <TabsContent value="acd">
+            <p className="text-muted-foreground mb-8">
+              Publishing highlights and summaries from Ethereum All Core Developers calls, supporting transparency in protocol discussions and upgrade coordination.
+            </p>
+            <div className="max-w-xl">
+              <blockquote className="twitter-tweet">
+                <a href="https://x.com/poojaranjan19/status/1958529528927515092">Loading tweet...</a>
+              </blockquote>
+            </div>
+          </TabsContent>
+        </Tabs>
+      </div>
+    </section>
   );
 };
 

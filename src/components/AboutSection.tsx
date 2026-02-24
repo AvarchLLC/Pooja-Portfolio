@@ -6,18 +6,32 @@ const stats = [
 ];
 
 const AboutSection = () => (
-  <section id="about" className="py-24">
-    <div className="max-w-6xl mx-auto px-6">
-      <div className="flex flex-col lg:flex-row gap-12 lg:gap-20">
-        {/* Left */}
-        <div className="lg:w-2/5">
-          <h2 className="text-4xl md:text-5xl font-bold text-foreground leading-tight">
-            Building Ethereum Since 2016
-          </h2>
-        </div>
+  <section id="about" className="py-24 bg-secondary">
+    <div className="max-w-7xl mx-auto px-6 lg:px-10">
+      {/* Stats row */}
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-20">
+        {stats.map((s) => (
+          <div key={s.label}>
+            <div className="text-4xl md:text-5xl font-bold text-foreground" style={{ fontFamily: "'Playfair Display', serif" }}>
+              {s.value}
+            </div>
+            <div className="text-sm text-muted-foreground mt-2">{s.label}</div>
+          </div>
+        ))}
+      </div>
 
-        {/* Right */}
-        <div className="lg:w-3/5 space-y-5 text-muted-foreground leading-relaxed">
+      {/* Bio */}
+      <div className="flex flex-col lg:flex-row gap-12 lg:gap-20">
+        <div className="lg:w-1/3">
+          <div className="w-48 h-48 md:w-56 md:h-56 rounded-2xl overflow-hidden">
+            <img
+              src="https://pbs.twimg.com/profile_images/1590379858498662400/i3Ie19xE_400x400.jpg"
+              alt="Pooja Ranjan"
+              className="w-full h-full object-cover"
+            />
+          </div>
+        </div>
+        <div className="lg:w-2/3 space-y-5 text-muted-foreground leading-relaxed text-base">
           <p>
             Pooja became part of the blockchain community in 2016 when she began learning about the Ethereum blockchain.
           </p>
@@ -31,16 +45,6 @@ const AboutSection = () => (
             Pooja actively contributes to the Ethereum Improvement Proposal Improvement Process (EIPIP) and EIP analytics, publishing monthly EIP statistics reports. Through EIPsInsight and multiple coordination efforts, she continues supporting Ethereum network upgrades and protocol governance initiatives.
           </p>
         </div>
-      </div>
-
-      {/* Stats */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-16 pt-16 border-t border-border">
-        {stats.map((s) => (
-          <div key={s.label} className="text-center">
-            <div className="text-4xl md:text-5xl font-bold text-foreground">{s.value}</div>
-            <div className="text-sm text-muted-foreground mt-2">{s.label}</div>
-          </div>
-        ))}
       </div>
     </div>
   </section>

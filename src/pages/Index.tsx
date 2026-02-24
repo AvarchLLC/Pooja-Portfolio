@@ -14,8 +14,7 @@ const Index = () => (
     <ProjectsSection />
     <ContactSection />
     <footer className="py-8 text-center border-t border-border">
-      <p className="text-sm text-muted-foreground">© 2025 Pooja Ranjan</p>
-      <p className="text-xs text-muted-foreground/60 mt-1">Building the Future of Ethereum</p>
+      <p className="text-sm text-muted-foreground">© 2025 Pooja Ranjan. Building the Future of Ethereum.</p>
     </footer>
   </div>
 );
