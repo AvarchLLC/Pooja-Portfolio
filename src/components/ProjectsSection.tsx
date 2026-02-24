@@ -4,6 +4,7 @@ import logoEtherworld from "@/assets/logo-etherworld.png";
 import logoEch from "@/assets/logo-ech.png";
 import logoEipsinsight from "@/assets/logo-eipsinsight.png";
 import logoWiep from "@/assets/logo-wiep.png";
+import logoBlockaction from "@/assets/logo-blockaction.png";
 
 const projects = [
   {
@@ -32,7 +33,7 @@ const projects = [
     description: "Blockchain wallet and transaction platform developed by Avarch in association with BitsBeat. Provides secure wallet creation, real-time transaction tracking, and simplified crypto interactions.",
     url: "https://avarch.org/blockaction.html",
     tags: ["Product", "Wallet"],
-    logo: null,
+    logo: logoBlockaction,
   },
   {
     title: "EIPsInsight",
