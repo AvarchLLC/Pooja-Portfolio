@@ -1,5 +1,5 @@
+import { useEffect } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { ExternalLink } from "lucide-react";
 
 const mediaTalks = [
   { title: "Women in Blockchain Panel Discussion", url: "https://www.youtube.com/watch?v=f1j2FwKgk7Q" },
@@ -48,7 +48,16 @@ const VideoGrid = ({ items }: { items: { title: string; url: string }[] }) => (
   </div>
 );
 
-const WorkSection = () => (
+const WorkSection = () => {
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.src = "https://platform.twitter.com/widgets.js";
+    script.async = true;
+    document.body.appendChild(script);
+    return () => { document.body.removeChild(script); };
+  }, []);
+
+  return (
   <section id="work" className="py-24">
     <div className="max-w-6xl mx-auto px-6">
       <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
@@ -77,11 +86,16 @@ const WorkSection = () => (
           <p className="text-muted-foreground mb-6 text-sm">
             Publishing highlights and summaries from Ethereum All Core Developers calls, supporting transparency in protocol discussions and upgrade coordination.
           </p>
-          <VideoGrid items={acdHighlights} />
+          <div className="max-w-xl">
+            <blockquote className="twitter-tweet" data-theme="dark">
+              <a href="https://x.com/poojaranjan19/status/1958529528927515092">Loading tweet...</a>
+            </blockquote>
+          </div>
         </TabsContent>
       </Tabs>
     </div>
   </section>
-);
+  );
+};
 
 export default WorkSection;
