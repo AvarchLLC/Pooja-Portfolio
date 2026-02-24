@@ -54,7 +54,7 @@ const WorkSection = () => (
       </h2>
 
       <Tabs defaultValue="media" className="w-full mt-10">
-        <TabsList className="bg-secondary mb-10 p-1 rounded-full">
+        <TabsList className="bg-secondary mb-10 p-1 rounded-full flex-wrap h-auto gap-1">
           <TabsTrigger value="media" className="rounded-full px-5">Media & Talks</TabsTrigger>
           <TabsTrigger value="peepaneip" className="rounded-full px-5">PEEPanEIP Series</TabsTrigger>
         </TabsList>
