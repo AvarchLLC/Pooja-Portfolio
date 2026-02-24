@@ -1,4 +1,9 @@
 import { ArrowUpRight } from "lucide-react";
+import logoAvarch from "@/assets/logo-avarch.png";
+import logoEtherworld from "@/assets/logo-etherworld.png";
+import logoEch from "@/assets/logo-ech.png";
+import logoEipsinsight from "@/assets/logo-eipsinsight.png";
+import logoWiep from "@/assets/logo-wiep.png";
 
 const projects = [
   {
@@ -6,36 +11,42 @@ const projects = [
     description: "Founded in 2017, Avarch LLC focuses on blockchain awareness, research, education, and ecosystem support. Its initiatives include EtherWorld, BlockAction, and EIPsInsight.",
     url: "https://avarch.org/",
     tags: ["Research", "Education"],
+    logo: logoAvarch,
   },
   {
     title: "EtherWorld",
     description: "One of the leading blockchain publishing platforms covering Ethereum protocol development, upgrades, ecosystem research, and technical insights since 2017.",
     url: "https://www.etherworld.co/",
     tags: ["Publishing", "Media"],
+    logo: logoEtherworld,
   },
   {
     title: "ECH Institute",
     description: "Decentralized project management group supporting Ethereum protocol development.",
     url: "https://www.ethereumcatherders.com/",
     tags: ["Protocol", "Coordination"],
+    logo: logoEch,
   },
   {
     title: "BlockAction Explorer",
     description: "Blockchain wallet and transaction platform developed by Avarch in association with BitsBeat. Provides secure wallet creation, real-time transaction tracking, and simplified crypto interactions.",
     url: "https://avarch.org/blockaction.html",
     tags: ["Product", "Wallet"],
+    logo: null,
   },
   {
     title: "EIPsInsight",
     description: "Data analytics dashboard for Ethereum Improvement Proposals, offering statistics, historical insights, and monthly reporting.",
     url: "https://eipsinsight.com/",
     tags: ["Analytics", "Data"],
+    logo: logoEipsinsight,
   },
   {
     title: "Women in Ethereum Protocol",
     description: "Initiative focused on increasing diversity and participation of women in Ethereum protocol development through mentorship, awareness, and community building.",
     url: "https://x.com/wiepteam",
     tags: ["Community", "Diversity"],
+    logo: logoWiep,
   },
 ];
 
@@ -60,6 +71,11 @@ const ProjectsSection = () => (
             rel="noopener noreferrer"
             className="group block p-7 rounded-2xl bg-background border border-border hover:shadow-lg transition-all duration-300"
           >
+            {p.logo && (
+              <div className="w-14 h-14 rounded-xl overflow-hidden mb-5 bg-secondary flex items-center justify-center">
+                <img src={p.logo} alt={`${p.title} logo`} className="w-full h-full object-contain" />
+              </div>
+            )}
             <div className="flex items-start justify-between mb-4">
               <h3
                 className="text-xl font-bold text-foreground group-hover:text-accent transition-colors"
