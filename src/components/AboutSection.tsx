@@ -1,3 +1,5 @@
+import poojaPfp from "@/assets/pooja-pfp.png";
+
 const stats = [
   { value: "9+", label: "Years in Ethereum" },
   { value: "6+", label: "Major Projects" },
@@ -25,7 +27,7 @@ const AboutSection = () => (
         <div className="lg:w-1/3">
           <div className="w-48 h-48 md:w-56 md:h-56 rounded-2xl overflow-hidden">
             <img
-              src="https://pbs.twimg.com/profile_images/1590379858498662400/i3Ie19xE_400x400.jpg"
+              src={poojaPfp}
               alt="Pooja Ranjan"
               className="w-full h-full object-cover"
             />
