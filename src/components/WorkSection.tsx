@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 const mediaTalks = [
@@ -44,57 +43,36 @@ const VideoGrid = ({ items }: { items: { title: string; url: string }[] }) => (
   </div>
 );
 
-const WorkSection = () => {
-  useEffect(() => {
-    const script = document.createElement("script");
-    script.src = "https://platform.twitter.com/widgets.js";
-    script.async = true;
-    document.body.appendChild(script);
-    return () => { document.body.removeChild(script); };
-  }, []);
+const WorkSection = () => (
+  <section id="work" className="py-24">
+    <div className="max-w-7xl mx-auto px-6 lg:px-10">
+      <h2
+        className="text-4xl md:text-5xl font-bold text-foreground mb-4"
+        style={{ fontFamily: "'Playfair Display', serif" }}
+      >
+        Shaping the Ethereum Ecosystem
+      </h2>
 
-  return (
-    <section id="work" className="py-24">
-      <div className="max-w-7xl mx-auto px-6 lg:px-10">
-        <h2
-          className="text-4xl md:text-5xl font-bold text-foreground mb-4"
-          style={{ fontFamily: "'Playfair Display', serif" }}
-        >
-          Shaping the Ethereum Ecosystem
-        </h2>
-
-        <Tabs defaultValue="media" className="w-full mt-10">
-          <TabsList className="bg-secondary mb-10 p-1 rounded-full">
-            <TabsTrigger value="media" className="rounded-full px-5">Media & Talks</TabsTrigger>
-            <TabsTrigger value="peepaneip" className="rounded-full px-5">PEEPanEIP Series</TabsTrigger>
-            <TabsTrigger value="acd" className="rounded-full px-5">AllCoreDevs</TabsTrigger>
-          </TabsList>
-          <TabsContent value="media">
-            <p className="text-muted-foreground mb-8">
-              Presentations and discussions on Ethereum protocol development, blockchain education, and community coordination.
-            </p>
-            <VideoGrid items={mediaTalks} />
-          </TabsContent>
-          <TabsContent value="peepaneip">
-            <p className="text-muted-foreground mb-8">
-              Educational series explaining Ethereum Improvement Proposals and their real-world protocol impact.
-            </p>
-            <VideoGrid items={peepanEIP} />
-          </TabsContent>
-          <TabsContent value="acd">
-            <p className="text-muted-foreground mb-8">
-              Publishing highlights and summaries from Ethereum All Core Developers calls, supporting transparency in protocol discussions and upgrade coordination.
-            </p>
-            <div className="max-w-xl">
-              <blockquote className="twitter-tweet">
-                <a href="https://x.com/poojaranjan19/status/1958529528927515092">Loading tweet...</a>
-              </blockquote>
-            </div>
-          </TabsContent>
-        </Tabs>
-      </div>
-    </section>
-  );
-};
+      <Tabs defaultValue="media" className="w-full mt-10">
+        <TabsList className="bg-secondary mb-10 p-1 rounded-full">
+          <TabsTrigger value="media" className="rounded-full px-5">Media & Talks</TabsTrigger>
+          <TabsTrigger value="peepaneip" className="rounded-full px-5">PEEPanEIP Series</TabsTrigger>
+        </TabsList>
+        <TabsContent value="media">
+          <p className="text-muted-foreground mb-8">
+            Presentations and discussions on Ethereum protocol development, blockchain education, and community coordination.
+          </p>
+          <VideoGrid items={mediaTalks} />
+        </TabsContent>
+        <TabsContent value="peepaneip">
+          <p className="text-muted-foreground mb-8">
+            Educational series explaining Ethereum Improvement Proposals and their real-world protocol impact.
+          </p>
+          <VideoGrid items={peepanEIP} />
+        </TabsContent>
+      </Tabs>
+    </div>
+  </section>
+);
 
 export default WorkSection;
