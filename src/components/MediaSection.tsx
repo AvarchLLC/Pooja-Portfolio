@@ -48,10 +48,10 @@ const references = [
 ];
 
 const echResources = [
-  "Happy 10 Years of Community Building with Ethereum",
-  "Ethereum Cat Herders' Wrap for 2024",
-  "ProgPoW: The Ethereum Community Speaks",
-  "It's Pectra Time!",
+  { text: "Happy 10 Years of Community Building with Ethereum", url: "https://medium.com/ethereum-cat-herders/happy-10-years-of-community-building-with-et" },
+  { text: "Ethereum Cat Herders' Wrap for 2024", url: "https://medium.com/ethereum-cat-herders/ethereum-cat-herders-wrap-for-2024-62b029f" },
+  { text: "ProgPoW: The Ethereum Community Speaks", url: "https://hudsonjameson.com/posts/2020-03-02-progpow-the-ethereum-community-speak" },
+  { text: "It's Pectra Time!", url: "https://medium.com/ethereum-cat-herders/its-pectra-time-0cf5561f662c" },
 ];
 
 const educationalSupport = [
