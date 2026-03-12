@@ -24,13 +24,12 @@ const interviews = [
 ];
 
 const additionalMedia = [
-  { text: "CNBC Feature", url: "#", icon: Video },
   { text: "Coindesk Short", url: "https://www.youtube.com/shorts/gpCc_NAtNn0", icon: Video },
   { text: "EthStakers Short", url: "https://www.youtube.com/shorts/tRIvDvcRhbU", icon: Video },
-  { text: "ConsenSys Educational Series", url: "https://courses.consensys.net/courses/understanding-ethereum-network-upgrades-dencun-december-2023-january-february-2024", icon: FileText },
-  { text: "Bankless DAO: Project Management Educational Series", url: "#", icon: Users },
-  { text: "The Daily Free Press — EthBoston 2023", url: "#", icon: Newspaper },
-  { text: "GM Bus Radio Interview", url: "#", icon: Mic },
+  { text: "ConsenSys: Understanding Ethereum", url: "https://courses.consensys.net/courses/understanding-ethere", icon: FileText },
+  { text: "EthDenver Mention", url: "https://x.com/EthereumDenver/status/1763697260968186109?s=20", icon: Users },
+  { text: "Devcon Speaker Profile", url: "https://app.devcon.org/speakers/JDLZ9T", icon: Mic },
+  { text: "Ethereum Singapore Conference", url: "https://ethereumsingapore.com/", icon: Newspaper },
 ];
 
 const communityMentions = [
