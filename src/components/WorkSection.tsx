@@ -27,50 +27,57 @@ const getYouTubeId = (url: string) => {
   return match ? match[1] : null;
 };
 
-const VideoGrid = ({ items }: { items: { title: string; url: string }[] }) => {
-  const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: "-50px" });
-
+const VideoCard = ({ item, index, inView }: { item: { title: string; url: string }; index: number; inView: boolean }) => {
+  const videoId = getYouTubeId(item.url);
   return (
-    <div ref={ref} className="grid grid-cols-1 md:grid-cols-2 gap-8">
-      {items.map((item, i) => {
-        const videoId = getYouTubeId(item.url);
-        return (
+    <motion.div
+      className="space-y-3 group"
+      initial={{ opacity: 0, y: 40, scale: 0.9 }}
+      animate={inView ? { opacity: 1, y: 0, scale: 1 } : {}}
+      transition={{ duration: 0.6, delay: index * 0.08, ease: [0.22, 1, 0.36, 1] }}
+    >
+      {videoId ? (
+        <motion.div
+          className="aspect-video rounded-2xl overflow-hidden border border-border bg-secondary relative"
+          whileHover={{
+            scale: 1.04,
+            boxShadow: "0 20px 60px -15px hsl(280 80% 65% / 0.3)",
+            borderColor: "hsl(var(--accent) / 0.3)",
+          }}
+          transition={{ duration: 0.4 }}
+        >
+          <iframe
+            src={`https://www.youtube.com/embed/${videoId}`}
+            title={item.title}
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+            className="w-full h-full"
+            loading="lazy"
+          />
+        </motion.div>
+      ) : (
+        <motion.a
+          href={item.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="block aspect-video rounded-2xl overflow-hidden border border-border bg-secondary relative flex items-center justify-center hover:border-accent/30 transition-all group/play"
+          whileHover={{ scale: 1.04 }}
+        >
           <motion.div
-            key={i}
-            className="space-y-3 group"
-            initial={{ opacity: 0, y: 30, scale: 0.95 }}
-            animate={inView ? { opacity: 1, y: 0, scale: 1 } : {}}
-            transition={{ duration: 0.6, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] }}
+            className="w-16 h-16 rounded-full bg-accent/10 flex items-center justify-center"
+            whileHover={{ scale: 1.2, backgroundColor: "hsl(var(--accent) / 0.2)" }}
           >
-            {videoId ? (
-              <motion.div
-                className="aspect-video rounded-2xl overflow-hidden border border-border bg-secondary relative"
-                whileHover={{ scale: 1.03, boxShadow: "0 12px 50px -12px hsl(280 80% 65% / 0.25)" }}
-                transition={{ duration: 0.3 }}
-              >
-                <iframe
-                  src={`https://www.youtube.com/embed/${videoId}`}
-                  title={item.title}
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                  className="w-full h-full"
-                  loading="lazy"
-                />
-              </motion.div>
-            ) : (
-              <a href={item.url} target="_blank" rel="noopener noreferrer" className="block aspect-video rounded-2xl overflow-hidden border border-border bg-secondary relative flex items-center justify-center hover:border-accent/30 transition-all">
-                <Play size={40} className="text-accent/50" />
-              </a>
-            )}
-            <div className="flex items-start gap-2">
-              <Play size={14} className="text-accent mt-0.5 flex-shrink-0" />
-              <p className="text-sm text-muted-foreground font-medium leading-snug">{item.title}</p>
-            </div>
+            <Play size={28} className="text-accent ml-1" />
           </motion.div>
-        );
-      })}
-    </div>
+        </motion.a>
+      )}
+      <div className="flex items-start gap-2">
+        <motion.div whileHover={{ scale: 1.3, rotate: 10 }}>
+          <Play size={14} className="text-accent mt-0.5 flex-shrink-0" />
+        </motion.div>
+        <p className="text-sm text-muted-foreground font-medium leading-snug group-hover:text-foreground transition-colors">{item.title}</p>
+      </div>
+    </motion.div>
   );
 };
 
@@ -79,15 +86,21 @@ const WorkSection = () => {
   const inView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="work" className="py-28" ref={ref}>
+    <section id="work" className="py-32" ref={ref}>
       <div className="max-w-7xl mx-auto px-6 lg:px-10">
         <motion.div
-          initial={{ opacity: 0, x: -20 }}
+          initial={{ opacity: 0, x: -30 }}
           animate={inView ? { opacity: 1, x: 0 } : {}}
-          transition={{ duration: 0.5 }}
-          className="flex items-center gap-3 mb-6"
+          transition={{ duration: 0.6 }}
+          className="flex items-center gap-3 mb-8"
         >
-          <div className="w-8 h-px line-gradient" />
+          <motion.div
+            className="w-12 h-px line-gradient"
+            initial={{ scaleX: 0 }}
+            animate={inView ? { scaleX: 1 } : {}}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            style={{ originX: 0 }}
+          />
           <span className="text-xs font-semibold tracking-[0.2em] uppercase text-accent">Talks & Media</span>
         </motion.div>
 
@@ -106,22 +119,44 @@ const WorkSection = () => {
           transition={{ duration: 0.6, delay: 0.2 }}
         >
           <Tabs defaultValue="media" className="w-full mt-10">
-            <TabsList className="bg-secondary/50 mb-10 p-1 rounded-full flex-wrap h-auto gap-1 border border-border">
-              <TabsTrigger value="media" className="rounded-full px-6 data-[state=active]:bg-gradient-primary data-[state=active]:text-primary-foreground">Media & Talks</TabsTrigger>
-              <TabsTrigger value="peepaneip" className="rounded-full px-6 data-[state=active]:bg-gradient-primary data-[state=active]:text-primary-foreground">PEEPanEIP Series</TabsTrigger>
+            <TabsList className="bg-glass mb-10 p-1.5 rounded-full flex-wrap h-auto gap-1">
+              <TabsTrigger value="media" className="rounded-full px-6 data-[state=active]:bg-gradient-primary data-[state=active]:text-primary-foreground transition-all">
+                Media & Talks
+              </TabsTrigger>
+              <TabsTrigger value="peepaneip" className="rounded-full px-6 data-[state=active]:bg-gradient-primary data-[state=active]:text-primary-foreground transition-all">
+                PEEPanEIP Series
+              </TabsTrigger>
             </TabsList>
             <TabsContent value="media">
-              <p className="text-muted-foreground mb-8">
+              <motion.p
+                className="text-muted-foreground mb-8"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.4 }}
+              >
                 Presentations and discussions on Ethereum protocol development, blockchain education, and community coordination.
-              </p>
-              <VideoGrid items={mediaTalks} />
+              </motion.p>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                {mediaTalks.map((item, i) => (
+                  <VideoCard key={i} item={item} index={i} inView={inView} />
+                ))}
+              </div>
             </TabsContent>
             <TabsContent value="peepaneip">
-              <p className="text-muted-foreground mb-8">
-                Educational series explaining Ethereum Improvement Proposals and their real-world protocol impact — including a session with{" "}
+              <motion.p
+                className="text-muted-foreground mb-8"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.4 }}
+              >
+                Educational series explaining Ethereum Improvement Proposals — including a session with{" "}
                 <span className="text-accent font-medium">Vitalik Buterin</span>.
-              </p>
-              <VideoGrid items={peepanEIP} />
+              </motion.p>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                {peepanEIP.map((item, i) => (
+                  <VideoCard key={i} item={item} index={i} inView={inView} />
+                ))}
+              </div>
             </TabsContent>
           </Tabs>
         </motion.div>
