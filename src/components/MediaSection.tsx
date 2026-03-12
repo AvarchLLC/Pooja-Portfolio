@@ -3,12 +3,12 @@ import { useRef, useState } from "react";
 import { ExternalLink, Newspaper, Award, BookOpen, Mic, Quote, FileText, Users, Video, ChevronDown, ChevronUp } from "lucide-react";
 
 const mediaFeatures = [
-  { title: "The Merge: 10 Key People Behind Ethereum's Biggest Upgrade Yet", source: "The Block", url: "https://www.theblock.co/post/166999/the-merge-10-key-people-behind-ethereums-biggest-upgrade-yet" },
-  { title: "Meet the 10 Women Who Are Shaping the Future of Ethereum", source: "Featured Article", url: "#" },
-  { title: "London Hard Fork on Ethereum Now Live", source: "Media Coverage", url: "#" },
-  { title: "Everything You Need to Know About the Ethereum Shapella", source: "The Block", url: "#" },
-  { title: "How Code Changes Are Made to the World's Most Sprawling Blockchain", source: "Media", url: "#" },
-  { title: "How the Ethereum Community Reacted to The Merge", source: "Media", url: "#" },
+  { title: "The Merge: 10 Key People Behind Ethereum's Biggest Upgrade Yet", source: "The Block", url: "https://www.theblock.co/post/166999/the-merge-10-key-people-behind-ethereums-bigge" },
+  { title: "Meet the 10 Women Who Are Shaping the Future of Ethereum", source: "EtherWorld", url: "https://etherworld.co/2025/03/08/meet-the-10-women-who-are-shaping-the-future-of-eth" },
+  { title: "London Hard Fork on Ethereum Now Live", source: "Decrypt", url: "https://decrypt.co/77746/london-hard-fork-ethereum-live" },
+  { title: "Everything You Need to Know About the Ethereum Shapella", source: "The Block", url: "https://www.theblock.co/post/225655/ethereum-shapella" },
+  { title: "How the Ethereum Community Reacted to The Merge", source: "The Block", url: "https://www.theblock.co/post/170334/an-incredible-feat-how-the-ethereum-community-re" },
+  { title: "Hudson Jameson Steps Down from Ethereum Core Developers", source: "Decrypt", url: "https://decrypt.co/52240/hudson-jameson-steps-down-from-ethereum-core-developers" },
 ];
 
 const speakingEvents = [
