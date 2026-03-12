@@ -1,4 +1,6 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
 
 const mediaTalks = [
   { title: "Women in Blockchain Panel Discussion", url: "https://www.youtube.com/watch?v=f1j2FwKgk7Q" },
@@ -20,59 +22,88 @@ const getYouTubeId = (url: string) => {
   return match ? match[1] : null;
 };
 
-const VideoGrid = ({ items }: { items: { title: string; url: string }[] }) => (
-  <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-    {items.map((item, i) => {
-      const videoId = getYouTubeId(item.url);
-      return (
-        <div key={i} className="space-y-3">
-          <div className="aspect-video rounded-xl overflow-hidden border border-border bg-secondary shadow-sm">
-            <iframe
-              src={`https://www.youtube.com/embed/${videoId}`}
-              title={item.title}
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-              className="w-full h-full"
-              loading="lazy"
-            />
-          </div>
-          <p className="text-sm text-muted-foreground font-medium">{item.title}</p>
-        </div>
-      );
-    })}
-  </div>
-);
+const VideoGrid = ({ items }: { items: { title: string; url: string }[] }) => {
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true, margin: "-50px" });
 
-const WorkSection = () => (
-  <section id="work" className="py-24">
-    <div className="max-w-7xl mx-auto px-6 lg:px-10">
-      <h2
-        className="text-4xl md:text-5xl font-bold text-foreground mb-4"
-        style={{ fontFamily: "'Playfair Display', serif" }}
-      >
-        Shaping the Ethereum Ecosystem
-      </h2>
-
-      <Tabs defaultValue="media" className="w-full mt-10">
-        <TabsList className="bg-secondary mb-10 p-1 rounded-full flex-wrap h-auto gap-1">
-          <TabsTrigger value="media" className="rounded-full px-5">Media & Talks</TabsTrigger>
-          <TabsTrigger value="peepaneip" className="rounded-full px-5">PEEPanEIP Series</TabsTrigger>
-        </TabsList>
-        <TabsContent value="media">
-          <p className="text-muted-foreground mb-8">
-            Presentations and discussions on Ethereum protocol development, blockchain education, and community coordination.
-          </p>
-          <VideoGrid items={mediaTalks} />
-        </TabsContent>
-        <TabsContent value="peepaneip">
-          <p className="text-muted-foreground mb-8">
-            Educational series explaining Ethereum Improvement Proposals and their real-world protocol impact.
-          </p>
-          <VideoGrid items={peepanEIP} />
-        </TabsContent>
-      </Tabs>
+  return (
+    <div ref={ref} className="grid grid-cols-1 md:grid-cols-2 gap-8">
+      {items.map((item, i) => {
+        const videoId = getYouTubeId(item.url);
+        return (
+          <motion.div
+            key={i}
+            className="space-y-3"
+            initial={{ opacity: 0, y: 25 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.5, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <motion.div
+              className="aspect-video rounded-xl overflow-hidden border border-border bg-secondary shadow-sm"
+              whileHover={{ scale: 1.02, boxShadow: "0 8px 30px -12px hsl(var(--accent) / 0.2)" }}
+              transition={{ duration: 0.3 }}
+            >
+              <iframe
+                src={`https://www.youtube.com/embed/${videoId}`}
+                title={item.title}
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                className="w-full h-full"
+                loading="lazy"
+              />
+            </motion.div>
+            <p className="text-sm text-muted-foreground font-medium">{item.title}</p>
+          </motion.div>
+        );
+      })}
     </div>
-  </section>
-);
+  );
+};
+
+const WorkSection = () => {
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true, margin: "-100px" });
+
+  return (
+    <section id="work" className="py-24" ref={ref}>
+      <div className="max-w-7xl mx-auto px-6 lg:px-10">
+        <motion.h2
+          className="text-4xl md:text-5xl font-bold text-foreground mb-4"
+          style={{ fontFamily: "'Playfair Display', serif" }}
+          initial={{ opacity: 0, y: 30 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+        >
+          Shaping the Ethereum Ecosystem
+        </motion.h2>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.2 }}
+        >
+          <Tabs defaultValue="media" className="w-full mt-10">
+            <TabsList className="bg-secondary mb-10 p-1 rounded-full flex-wrap h-auto gap-1">
+              <TabsTrigger value="media" className="rounded-full px-5">Media & Talks</TabsTrigger>
+              <TabsTrigger value="peepaneip" className="rounded-full px-5">PEEPanEIP Series</TabsTrigger>
+            </TabsList>
+            <TabsContent value="media">
+              <p className="text-muted-foreground mb-8">
+                Presentations and discussions on Ethereum protocol development, blockchain education, and community coordination.
+              </p>
+              <VideoGrid items={mediaTalks} />
+            </TabsContent>
+            <TabsContent value="peepaneip">
+              <p className="text-muted-foreground mb-8">
+                Educational series explaining Ethereum Improvement Proposals and their real-world protocol impact.
+              </p>
+              <VideoGrid items={peepanEIP} />
+            </TabsContent>
+          </Tabs>
+        </motion.div>
+      </div>
+    </section>
+  );
+};
 
 export default WorkSection;
