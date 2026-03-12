@@ -1,4 +1,4 @@
-import { Mail, ArrowRight } from "lucide-react";
+import { Mail, ArrowRight, Linkedin, Github } from "lucide-react";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import SocialIcons from "./SocialIcons";
@@ -9,9 +9,12 @@ const ContactSection = () => {
 
   return (
     <section id="contact" className="py-28 relative" ref={ref}>
-      {/* Background glow */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] rounded-full bg-accent/5 blur-[120px]" />
+        <motion.div
+          className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] rounded-full bg-accent/5 blur-[120px]"
+          animate={{ scale: [1, 1.1, 1], opacity: [0.5, 0.8, 0.5] }}
+          transition={{ duration: 6, repeat: Infinity }}
+        />
       </div>
 
       <div className="max-w-7xl mx-auto px-6 lg:px-10 relative z-10">
@@ -53,7 +56,7 @@ const ContactSection = () => {
             <motion.a
               href="mailto:contact@etherworld.co"
               className="inline-flex items-center gap-2 px-7 py-3.5 bg-gradient-primary text-primary-foreground rounded-full text-sm font-semibold group shadow-lg glow-accent"
-              whileHover={{ scale: 1.05 }}
+              whileHover={{ scale: 1.05, boxShadow: "0 0 50px -10px hsl(280 80% 65% / 0.4)" }}
               whileTap={{ scale: 0.97 }}
             >
               <Mail size={16} />
@@ -71,10 +74,34 @@ const ContactSection = () => {
             </motion.a>
           </motion.div>
 
+          {/* Quick links */}
+          <motion.div
+            className="flex flex-wrap items-center justify-center gap-4 mb-10"
+            initial={{ opacity: 0 }}
+            animate={inView ? { opacity: 1 } : {}}
+            transition={{ duration: 0.6, delay: 0.4 }}
+          >
+            <a href="https://www.linkedin.com/in/pooja-r-072899114" target="_blank" rel="noopener noreferrer" className="text-sm text-muted-foreground hover:text-accent transition-colors flex items-center gap-1">
+              <Linkedin size={14} /> LinkedIn
+            </a>
+            <span className="text-border">·</span>
+            <a href="https://github.com/poojaranjan" target="_blank" rel="noopener noreferrer" className="text-sm text-muted-foreground hover:text-accent transition-colors flex items-center gap-1">
+              <Github size={14} /> GitHub
+            </a>
+            <span className="text-border">·</span>
+            <a href="https://twitter.com/poojaranjan19" target="_blank" rel="noopener noreferrer" className="text-sm text-muted-foreground hover:text-accent transition-colors">
+              𝕏 Twitter
+            </a>
+            <span className="text-border">·</span>
+            <a href="https://farcaster.xyz/poojaranjan19" target="_blank" rel="noopener noreferrer" className="text-sm text-muted-foreground hover:text-accent transition-colors">
+              Farcaster
+            </a>
+          </motion.div>
+
           <motion.div
             initial={{ opacity: 0 }}
             animate={inView ? { opacity: 1 } : {}}
-            transition={{ duration: 0.6, delay: 0.45 }}
+            transition={{ duration: 0.6, delay: 0.5 }}
           >
             <SocialIcons className="justify-center" />
           </motion.div>

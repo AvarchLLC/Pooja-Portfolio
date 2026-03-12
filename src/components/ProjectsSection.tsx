@@ -15,6 +15,7 @@ const projects = [
     url: "https://avarch.org/",
     tags: ["Consultancy", "Blockchain"],
     logo: logoAvarch,
+    color: "accent",
   },
   {
     title: "EtherWorld",
@@ -22,6 +23,7 @@ const projects = [
     url: "https://www.etherworld.co/",
     tags: ["Media", "Education"],
     logo: logoEtherworld,
+    color: "accent-cyan",
   },
   {
     title: "ECH Institute",
@@ -29,6 +31,7 @@ const projects = [
     url: "https://www.ethereumcatherders.com/",
     tags: ["Non-Profit", "Governance"],
     logo: logoEch,
+    color: "accent-warm",
   },
   {
     title: "BlockAction",
@@ -36,6 +39,7 @@ const projects = [
     url: "https://avarch.org/blockaction.html",
     tags: ["Product", "Wallet"],
     logo: logoBlockaction,
+    color: "accent",
   },
   {
     title: "EIPsInsight",
@@ -43,6 +47,7 @@ const projects = [
     url: "https://eipsinsight.com/",
     tags: ["Analytics", "Data"],
     logo: logoEipsinsight,
+    color: "accent-cyan",
   },
   {
     title: "Women in Ethereum Protocol",
@@ -50,6 +55,7 @@ const projects = [
     url: "https://x.com/wiepteam",
     tags: ["Community", "Diversity"],
     logo: logoWiep,
+    color: "accent-warm",
   },
 ];
 
@@ -86,31 +92,43 @@ const ProjectsSection = () => {
               href={p.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="group block p-7 rounded-2xl bg-glass border border-border/50 hover:border-accent/30 transition-all duration-300"
-              initial={{ opacity: 0, y: 30 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: 0.1 + i * 0.08, ease: [0.22, 1, 0.36, 1] }}
-              whileHover={{ y: -5, transition: { duration: 0.2 } }}
+              className="group block p-7 rounded-2xl bg-glass border border-border/50 hover:border-accent/30 transition-all duration-300 relative overflow-hidden"
+              initial={{ opacity: 0, y: 40, rotateX: 5 }}
+              animate={inView ? { opacity: 1, y: 0, rotateX: 0 } : {}}
+              transition={{ duration: 0.6, delay: 0.1 + i * 0.1, ease: [0.22, 1, 0.36, 1] }}
+              whileHover={{ y: -8, scale: 1.02, transition: { duration: 0.3 } }}
             >
-              <div className="w-14 h-14 rounded-xl overflow-hidden mb-5 bg-secondary flex items-center justify-center ring-1 ring-border">
-                <img src={p.logo} alt={`${p.title} logo`} className="w-full h-full object-contain" />
+              {/* Hover gradient overlay */}
+              <div className="absolute inset-0 bg-gradient-to-br from-accent/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl" />
+
+              <div className="relative z-10">
+                <motion.div
+                  className="w-14 h-14 rounded-xl overflow-hidden mb-5 bg-secondary flex items-center justify-center ring-1 ring-border"
+                  whileHover={{ rotate: 5, scale: 1.1 }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                >
+                  <img src={p.logo} alt={`${p.title} logo`} className="w-full h-full object-contain" />
+                </motion.div>
+                <div className="flex items-start justify-between mb-3">
+                  <h3 className="text-xl font-bold text-foreground group-hover:text-accent transition-colors">
+                    {p.title}
+                  </h3>
+                  <motion.div
+                    className="text-muted-foreground opacity-0 group-hover:opacity-100 transition-all mt-1 flex-shrink-0"
+                    whileHover={{ rotate: 45 }}
+                  >
+                    <ArrowUpRight size={18} className="text-accent" />
+                  </motion.div>
+                </div>
+                <div className="flex flex-wrap gap-2 mb-4">
+                  {p.tags.map((tag) => (
+                    <span key={tag} className="text-[10px] px-3 py-1 rounded-full bg-secondary text-muted-foreground font-semibold uppercase tracking-wider">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+                <p className="text-sm text-muted-foreground leading-relaxed">{p.description}</p>
               </div>
-              <div className="flex items-start justify-between mb-3">
-                <h3 className="text-xl font-bold text-foreground group-hover:text-gradient transition-colors">
-                  {p.title}
-                </h3>
-                <ArrowUpRight size={18} className="text-muted-foreground opacity-0 group-hover:opacity-100 group-hover:text-accent transition-all mt-1 flex-shrink-0" />
-              </div>
-              <div className="flex flex-wrap gap-2 mb-4">
-                {p.tags.map((tag) => (
-                  <span key={tag} className="text-[10px] px-3 py-1 rounded-full bg-secondary text-muted-foreground font-semibold uppercase tracking-wider">
-                    {tag}
-                  </span>
-                ))}
-              </div>
-              <p className="text-sm text-muted-foreground leading-relaxed">
-                {p.description}
-              </p>
             </motion.a>
           ))}
         </div>

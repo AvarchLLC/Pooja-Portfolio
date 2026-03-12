@@ -1,12 +1,26 @@
-import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import { motion, useInView, useMotionValue, useTransform, animate } from "framer-motion";
+import { useRef, useEffect, useState } from "react";
 
 const stats = [
-  { value: "8+", label: "Years in Ethereum", icon: "⟠" },
-  { value: "6+", label: "Major Projects", icon: "◆" },
-  { value: "8+", label: "Network Upgrades", icon: "↗" },
-  { value: "100+", label: "EIP Contributions", icon: "📋" },
+  { value: 8, suffix: "+", label: "Years in Ethereum", icon: "⟠" },
+  { value: 6, suffix: "+", label: "Major Projects", icon: "◆" },
+  { value: 8, suffix: "+", label: "Network Upgrades", icon: "↗" },
+  { value: 100, suffix: "+", label: "EIP Contributions", icon: "📋" },
 ];
+
+const AnimatedCounter = ({ value, suffix, inView }: { value: number; suffix: string; inView: boolean }) => {
+  const [display, setDisplay] = useState(0);
+  useEffect(() => {
+    if (!inView) return;
+    const ctrl = animate(0, value, {
+      duration: 2,
+      ease: "easeOut",
+      onUpdate: (v) => setDisplay(Math.round(v)),
+    });
+    return () => ctrl.stop();
+  }, [inView, value]);
+  return <>{display}{suffix}</>;
+};
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -24,7 +38,6 @@ const AboutSection = () => {
   return (
     <section id="about" className="py-28 relative" ref={ref}>
       <div className="max-w-7xl mx-auto px-6 lg:px-10">
-        {/* Section label */}
         <motion.div
           initial={{ opacity: 0, x: -20 }}
           animate={inView ? { opacity: 1, x: 0 } : {}}
@@ -45,7 +58,6 @@ const AboutSection = () => {
           <span className="text-gradient">Open-Source Protocol</span>
         </motion.h2>
 
-        {/* Summary paragraphs */}
         <div className="max-w-3xl space-y-5 text-muted-foreground leading-relaxed mb-20">
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -59,7 +71,14 @@ const AboutSection = () => {
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.3 }}
           >
-            I currently serve as President of ECH Institute, a U.S.-based nonprofit supporting education, community coordination, and public-goods infrastructure around Ethereum. I am also the founder of Avarch LLC, where I lead enterprise-facing initiatives such as EtherWorld and EIPsInsight.
+            I currently serve as President of{" "}
+            <a href="https://www.ethereumcatherders.com/" target="_blank" rel="noopener noreferrer" className="text-accent hover:underline font-medium">ECH Institute</a>
+            , a U.S.-based nonprofit supporting education, community coordination, and public-goods infrastructure around Ethereum. I am also the founder of{" "}
+            <a href="https://avarch.org/" target="_blank" rel="noopener noreferrer" className="text-accent hover:underline font-medium">Avarch LLC</a>
+            , where I lead enterprise-facing initiatives such as{" "}
+            <a href="https://www.etherworld.co/" target="_blank" rel="noopener noreferrer" className="text-accent hover:underline font-medium">EtherWorld</a>
+            {" "}and{" "}
+            <a href="https://eipsinsight.com/" target="_blank" rel="noopener noreferrer" className="text-accent hover:underline font-medium">EIPsInsight</a>.
           </motion.p>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -70,7 +89,7 @@ const AboutSection = () => {
           </motion.p>
         </div>
 
-        {/* Stats */}
+        {/* Animated Stats */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
           {stats.map((s, i) => (
             <motion.div
@@ -79,11 +98,18 @@ const AboutSection = () => {
               initial="hidden"
               animate={inView ? "visible" : "hidden"}
               variants={fadeUp}
+              whileHover={{ y: -5, scale: 1.03, transition: { duration: 0.2 } }}
               className="bg-glass rounded-2xl p-6 text-center group hover:glow-accent transition-shadow duration-500"
             >
-              <div className="text-2xl mb-2">{s.icon}</div>
+              <motion.div
+                className="text-2xl mb-2"
+                animate={inView ? { rotateY: [0, 360] } : {}}
+                transition={{ duration: 0.8, delay: 0.5 + i * 0.15 }}
+              >
+                {s.icon}
+              </motion.div>
               <div className="text-3xl md:text-4xl font-extrabold text-foreground mb-1">
-                {s.value}
+                <AnimatedCounter value={s.value} suffix={s.suffix} inView={inView} />
               </div>
               <div className="text-xs text-muted-foreground font-medium uppercase tracking-wider">{s.label}</div>
             </motion.div>

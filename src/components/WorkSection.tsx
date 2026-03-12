@@ -1,14 +1,18 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { Play } from "lucide-react";
+import { Play, ExternalLink } from "lucide-react";
 
 const mediaTalks = [
   { title: "Women in Blockchain Panel Discussion", url: "https://www.youtube.com/watch?v=f1j2FwKgk7Q" },
   { title: "EDCON 2021 Keynote | The Future of Ethereum with EIPs", url: "https://www.youtube.com/watch?v=5PmGt1B-SVc" },
   { title: "Opportunities in Web3 @ ETHWMN", url: "https://www.youtube.com/watch?v=AbCzQtQWlSE" },
-  { title: "Founder, EtherWorld & Herder-in-Chief, Ethereum Cat Herders", url: "https://www.youtube.com/watch?v=GpeOMZQCiLI" },
+  { title: "Founder, EtherWorld & Herder-in-Chief, ECH", url: "https://www.youtube.com/watch?v=GpeOMZQCiLI" },
   { title: "The Importance of Education & Diversity in Protocol Development | EDCON 2025", url: "https://www.youtube.com/watch?v=uVj7JyTbLbg" },
+  { title: "Shaping Ethereum's Protocol Governance & Decision-Making | W3 Hub at Devcon 2024", url: "#" },
+  { title: "Elements of Protocol Governance | EDCON 2023", url: "#" },
+  { title: "Empowering Women in Ethereum: WiEP Introduction | Devcon 2024", url: "#" },
+  { title: "EIPs Simplified: History and Process Explained | Devcon SEA", url: "#" },
 ];
 
 const peepanEIP = [
@@ -35,24 +39,30 @@ const VideoGrid = ({ items }: { items: { title: string; url: string }[] }) => {
           <motion.div
             key={i}
             className="space-y-3 group"
-            initial={{ opacity: 0, y: 25 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.5, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] }}
+            initial={{ opacity: 0, y: 30, scale: 0.95 }}
+            animate={inView ? { opacity: 1, y: 0, scale: 1 } : {}}
+            transition={{ duration: 0.6, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] }}
           >
-            <motion.div
-              className="aspect-video rounded-2xl overflow-hidden border border-border bg-secondary relative"
-              whileHover={{ scale: 1.02, boxShadow: "0 8px 40px -12px hsl(280 80% 65% / 0.2)" }}
-              transition={{ duration: 0.3 }}
-            >
-              <iframe
-                src={`https://www.youtube.com/embed/${videoId}`}
-                title={item.title}
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-                className="w-full h-full"
-                loading="lazy"
-              />
-            </motion.div>
+            {videoId ? (
+              <motion.div
+                className="aspect-video rounded-2xl overflow-hidden border border-border bg-secondary relative"
+                whileHover={{ scale: 1.03, boxShadow: "0 12px 50px -12px hsl(280 80% 65% / 0.25)" }}
+                transition={{ duration: 0.3 }}
+              >
+                <iframe
+                  src={`https://www.youtube.com/embed/${videoId}`}
+                  title={item.title}
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                  className="w-full h-full"
+                  loading="lazy"
+                />
+              </motion.div>
+            ) : (
+              <a href={item.url} target="_blank" rel="noopener noreferrer" className="block aspect-video rounded-2xl overflow-hidden border border-border bg-secondary relative flex items-center justify-center hover:border-accent/30 transition-all">
+                <Play size={40} className="text-accent/50" />
+              </a>
+            )}
             <div className="flex items-start gap-2">
               <Play size={14} className="text-accent mt-0.5 flex-shrink-0" />
               <p className="text-sm text-muted-foreground font-medium leading-snug">{item.title}</p>
@@ -108,7 +118,8 @@ const WorkSection = () => {
             </TabsContent>
             <TabsContent value="peepaneip">
               <p className="text-muted-foreground mb-8">
-                Educational series explaining Ethereum Improvement Proposals and their real-world protocol impact.
+                Educational series explaining Ethereum Improvement Proposals and their real-world protocol impact — including a session with{" "}
+                <span className="text-accent font-medium">Vitalik Buterin</span>.
               </p>
               <VideoGrid items={peepanEIP} />
             </TabsContent>
