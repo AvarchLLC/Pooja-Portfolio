@@ -5,6 +5,7 @@ import ExperienceSection from "@/components/ExperienceSection";
 import WorkSection from "@/components/WorkSection";
 import ProjectsSection from "@/components/ProjectsSection";
 import EducationSection from "@/components/EducationSection";
+import MediaSection from "@/components/MediaSection";
 import ContactSection from "@/components/ContactSection";
 import { motion } from "framer-motion";
 
@@ -17,6 +18,7 @@ const Index = () => (
     <WorkSection />
     <ProjectsSection />
     <EducationSection />
+    <MediaSection />
     <ContactSection />
     <motion.footer
       className="py-8 text-center border-t border-border"
