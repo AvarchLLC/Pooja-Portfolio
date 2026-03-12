@@ -3,12 +3,12 @@ import { useRef, useState } from "react";
 import { ExternalLink, Newspaper, Award, BookOpen, Mic, Quote, FileText, Users, Video, ChevronDown, ChevronUp } from "lucide-react";
 
 const mediaFeatures = [
-  { title: "The Merge: 10 Key People Behind Ethereum's Biggest Upgrade Yet", source: "The Block", url: "https://www.theblock.co/post/166999/the-merge-10-key-people-behind-ethereums-biggest-upgrade-yet" },
-  { title: "Meet the 10 Women Who Are Shaping the Future of Ethereum", source: "Featured Article", url: "#" },
-  { title: "London Hard Fork on Ethereum Now Live", source: "Media Coverage", url: "#" },
-  { title: "Everything You Need to Know About the Ethereum Shapella", source: "The Block", url: "#" },
-  { title: "How Code Changes Are Made to the World's Most Sprawling Blockchain", source: "Media", url: "#" },
-  { title: "How the Ethereum Community Reacted to The Merge", source: "Media", url: "#" },
+  { title: "The Merge: 10 Key People Behind Ethereum's Biggest Upgrade Yet", source: "The Block", url: "https://www.theblock.co/post/166999/the-merge-10-key-people-behind-ethereums-bigge" },
+  { title: "Meet the 10 Women Who Are Shaping the Future of Ethereum", source: "EtherWorld", url: "https://etherworld.co/2025/03/08/meet-the-10-women-who-are-shaping-the-future-of-eth" },
+  { title: "London Hard Fork on Ethereum Now Live", source: "Decrypt", url: "https://decrypt.co/77746/london-hard-fork-ethereum-live" },
+  { title: "Everything You Need to Know About the Ethereum Shapella", source: "The Block", url: "https://www.theblock.co/post/225655/ethereum-shapella" },
+  { title: "How the Ethereum Community Reacted to The Merge", source: "The Block", url: "https://www.theblock.co/post/170334/an-incredible-feat-how-the-ethereum-community-re" },
+  { title: "Hudson Jameson Steps Down from Ethereum Core Developers", source: "Decrypt", url: "https://decrypt.co/52240/hudson-jameson-steps-down-from-ethereum-core-developers" },
 ];
 
 const speakingEvents = [
@@ -18,41 +18,40 @@ const speakingEvents = [
 ];
 
 const interviews = [
-  { title: "Education and Organization for Ethereum — Unstoppable Domains", url: "#" },
-  { title: "MolochDAO Interview with Pooja Ranjan of Ethereum Cat Herders", url: "#" },
-  { title: "Meet The Herders: Pooja Ranjan", url: "#" },
+  { title: "An Introduction to EIPs with Tim Beiko — Unstoppable Domains", url: "https://unstoppabledomains.com/blog/an-introduction-to-eips-with-tim-beiko-from-the-eth" },
+  { title: "MolochDAO Interview with Pooja Ranjan of Ethereum Cat Herders", url: "https://medium.com/molochdao/molochdao-interview-with-pooja-ranjan-of-ethereum-cat" },
+  { title: "Meet The Herders Ep 1: Pooja Ranjan", url: "https://medium.com/ethereum-cat-herders/meet-the-herders-ep-1-pooja-ranjan-herder-in" },
 ];
 
 const additionalMedia = [
-  { text: "CNBC Feature", url: "#", icon: Video },
   { text: "Coindesk Short", url: "https://www.youtube.com/shorts/gpCc_NAtNn0", icon: Video },
   { text: "EthStakers Short", url: "https://www.youtube.com/shorts/tRIvDvcRhbU", icon: Video },
-  { text: "ConsenSys Educational Series", url: "https://courses.consensys.net/courses/understanding-ethereum-network-upgrades-dencun-december-2023-january-february-2024", icon: FileText },
-  { text: "Bankless DAO: Project Management Educational Series", url: "#", icon: Users },
-  { text: "The Daily Free Press — EthBoston 2023", url: "#", icon: Newspaper },
-  { text: "GM Bus Radio Interview", url: "#", icon: Mic },
+  { text: "ConsenSys: Understanding Ethereum", url: "https://courses.consensys.net/courses/understanding-ethere", icon: FileText },
+  { text: "EthDenver Mention", url: "https://x.com/EthereumDenver/status/1763697260968186109?s=20", icon: Users },
+  { text: "Devcon Speaker Profile", url: "https://app.devcon.org/speakers/JDLZ9T", icon: Mic },
+  { text: "Ethereum Singapore Conference", url: "https://ethereumsingapore.com/", icon: Newspaper },
 ];
 
 const communityMentions = [
-  "Gratitude to women who have made huge contributions",
-  "An introduction to EIPs with Tim Beiko from the Ethereum Foundation",
-  "Ethereum Network Upgrades Part 1: The Process",
-  "The Ethereum Government",
-  "Hudson Jameson Steps Down from Ethereum Core Developers",
+  { text: "Gratitude to Women Who Made Huge Contributions to Ethereum", url: "https://www.reddit.com/r/ethereum/comments/11lslel/gratitude_to_women_who_have_m" },
+  { text: "Ethereum Network Upgrades: The Process", url: "https://blog.metrika.co/ethereum-network-upgrades-part-1-the-process-7112ba57f3fb" },
+  { text: "Ethereum Governance Research — Galaxy Digital", url: "https://www.galaxy.com/insights/research/ethereum-governance" },
+  { text: "ProgPoW: The Ethereum Community Speaks", url: "https://hudsonjameson.com/posts/2020-03-02-progpow-the-ethereum-community-speak" },
+  { text: "Flashbots MEV Letter #91", url: "https://collective.flashbots.net/t/the-mev-letter-91/4988/1" },
 ];
 
 const references = [
-  { title: "Yale Journal of Law & Technology", type: "Academic", url: "#" },
-  { title: "Pectra Upgrade: What's New — Etherscan", type: "Technical", url: "#" },
-  { title: "The MEV Letter #91", type: "Research", url: "#" },
-  { title: "ConsenSys Academy: Understanding Ethereum Network Upgrades", type: "Educational", url: "https://courses.consensys.net/courses/understanding-ethereum-network-upgrades-dencun-december-2023-january-february-2024" },
+  { title: "Yale Journal of Law & Technology", type: "Academic", url: "https://yjolt.org/blog/ethereum-20-and-prospect-reverse-mutation" },
+  { title: "Pectra Upgrade: What's New — Etherscan", type: "Technical", url: "https://info.etherscan.com/pectra-upgrade-whats-new-and-how-to-track-it-on-etherscan/" },
+  { title: "The MEV Letter #91 — Flashbots", type: "Research", url: "https://collective.flashbots.net/t/the-mev-letter-91/4988/1" },
+  { title: "ConsenSys: Understanding Ethereum", type: "Educational", url: "https://courses.consensys.net/courses/understanding-ethere" },
 ];
 
 const echResources = [
-  "Happy 10 Years of Community Building with Ethereum",
-  "Ethereum Cat Herders' Wrap for 2024",
-  "ProgPoW: The Ethereum Community Speaks",
-  "It's Pectra Time!",
+  { text: "Happy 10 Years of Community Building with Ethereum", url: "https://medium.com/ethereum-cat-herders/happy-10-years-of-community-building-with-et" },
+  { text: "Ethereum Cat Herders' Wrap for 2024", url: "https://medium.com/ethereum-cat-herders/ethereum-cat-herders-wrap-for-2024-62b029f" },
+  { text: "ProgPoW: The Ethereum Community Speaks", url: "https://hudsonjameson.com/posts/2020-03-02-progpow-the-ethereum-community-speak" },
+  { text: "It's Pectra Time!", url: "https://medium.com/ethereum-cat-herders/its-pectra-time-0cf5561f662c" },
 ];
 
 const educationalSupport = [
@@ -252,18 +251,22 @@ const MediaSection = () => {
         {/* Three-column: ECH Resources, ACD, References */}
         <div className="grid md:grid-cols-3 gap-8 mb-16">
           <SectionBlock title="ECH Resources" icon={FileText} iconColor="text-accent" delay={0.1}>
-            <ul className="space-y-2">
-              {echResources.map((text, i) => (
-                <motion.li
+            <div className="space-y-2">
+              {echResources.map((item, i) => (
+                <motion.a
                   key={i}
-                  className="text-sm text-muted-foreground flex items-start gap-2 hover:text-foreground transition-colors cursor-default"
+                  href={item.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-start gap-2 p-2 text-sm text-muted-foreground hover:text-foreground transition-colors group"
                   whileHover={{ x: 4 }}
                 >
                   <span className="w-1 h-1 rounded-full bg-accent mt-2 flex-shrink-0" />
-                  {text}
-                </motion.li>
+                  <span className="flex-1">{item.text}</span>
+                  <ExternalLink size={11} className="opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0 mt-0.5 text-muted-foreground/50" />
+                </motion.a>
               ))}
-            </ul>
+            </div>
           </SectionBlock>
 
           <SectionBlock title="ACD Mentions" icon={Award} iconColor="text-accent-warm" delay={0.15}>
@@ -309,9 +312,12 @@ const MediaSection = () => {
         >
           <h3 className="text-lg font-bold text-foreground mb-5">Community Shoutouts</h3>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
-            {communityMentions.map((text, i) => (
-              <motion.div
+            {communityMentions.map((item, i) => (
+              <motion.a
                 key={i}
+                href={item.url}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-sm text-muted-foreground flex items-start gap-2 bg-glass rounded-xl p-4 hover:text-foreground transition-all group"
                 whileHover={{ y: -3, scale: 1.01 }}
               >
@@ -320,8 +326,9 @@ const MediaSection = () => {
                   animate={{ scale: [1, 1.3, 1] }}
                   transition={{ duration: 2, repeat: Infinity, delay: i * 0.3 }}
                 />
-                {text}
-              </motion.div>
+                <span className="flex-1">{item.text}</span>
+                <ExternalLink size={11} className="opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0 mt-0.5 text-muted-foreground/50" />
+              </motion.a>
             ))}
           </div>
         </motion.div>
