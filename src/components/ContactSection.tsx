@@ -1,4 +1,4 @@
-import { Mail, ArrowRight, Linkedin, Github } from "lucide-react";
+import { Mail, ArrowRight, Linkedin, Github, Sparkles } from "lucide-react";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import SocialIcons from "./SocialIcons";
@@ -8,38 +8,45 @@ const ContactSection = () => {
   const inView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="contact" className="py-28 relative" ref={ref}>
+    <section id="contact" className="py-32 relative" ref={ref}>
+      {/* Multiple animated orbs */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <motion.div
-          className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] rounded-full bg-accent/5 blur-[120px]"
-          animate={{ scale: [1, 1.1, 1], opacity: [0.5, 0.8, 0.5] }}
-          transition={{ duration: 6, repeat: Infinity }}
+          className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[700px] h-[400px] rounded-full bg-accent/[0.06] blur-[150px]"
+          animate={{ scale: [1, 1.15, 1], opacity: [0.4, 0.7, 0.4] }}
+          transition={{ duration: 7, repeat: Infinity }}
+        />
+        <motion.div
+          className="absolute top-1/3 left-1/4 w-[300px] h-[300px] rounded-full bg-accent-cyan/[0.04] blur-[100px]"
+          animate={{ x: [0, 30, 0], y: [0, -20, 0] }}
+          transition={{ duration: 10, repeat: Infinity }}
         />
       </div>
 
       <div className="max-w-7xl mx-auto px-6 lg:px-10 relative z-10">
         <div className="max-w-3xl mx-auto text-center">
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={inView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.5 }}
-            className="flex items-center gap-3 mb-6 justify-center"
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={inView ? { opacity: 1, scale: 1 } : {}}
+            transition={{ duration: 0.6, type: "spring" }}
+            className="flex items-center gap-3 mb-8 justify-center"
           >
-            <div className="w-8 h-px line-gradient" />
+            <motion.div className="w-12 h-px line-gradient" initial={{ scaleX: 0 }} animate={inView ? { scaleX: 1 } : {}} transition={{ duration: 0.8 }} style={{ originX: 1 }} />
             <span className="text-xs font-semibold tracking-[0.2em] uppercase text-accent">Contact</span>
-            <div className="w-8 h-px line-gradient" />
+            <motion.div className="w-12 h-px line-gradient" initial={{ scaleX: 0 }} animate={inView ? { scaleX: 1 } : {}} transition={{ duration: 0.8 }} style={{ originX: 0 }} />
           </motion.div>
 
           <motion.h2
             className="text-3xl md:text-5xl lg:text-6xl font-extrabold text-foreground mb-6 tracking-tight"
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 40 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           >
             Let's <span className="text-gradient">Connect</span>
           </motion.h2>
+          
           <motion.p
-            className="text-lg text-muted-foreground mb-10"
+            className="text-lg text-muted-foreground mb-12"
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.15 }}
@@ -48,59 +55,83 @@ const ContactSection = () => {
           </motion.p>
 
           <motion.div
-            className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-10"
+            className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12"
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.3 }}
           >
             <motion.a
               href="mailto:contact@etherworld.co"
-              className="inline-flex items-center gap-2 px-7 py-3.5 bg-gradient-primary text-primary-foreground rounded-full text-sm font-semibold group shadow-lg glow-accent"
-              whileHover={{ scale: 1.05, boxShadow: "0 0 50px -10px hsl(280 80% 65% / 0.4)" }}
-              whileTap={{ scale: 0.97 }}
+              className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-primary text-primary-foreground rounded-full text-sm font-semibold group shadow-lg glow-accent relative overflow-hidden"
+              whileHover={{ scale: 1.05, boxShadow: "0 0 60px -10px hsl(280 80% 65% / 0.5)" }}
+              whileTap={{ scale: 0.95 }}
             >
-              <Mail size={16} />
-              contact@etherworld.co
-              <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+              <motion.div
+                className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"
+                animate={{ x: ["-100%", "200%"] }}
+                transition={{ duration: 2.5, repeat: Infinity, repeatDelay: 4 }}
+              />
+              <Mail size={16} className="relative z-10" />
+              <span className="relative z-10">contact@etherworld.co</span>
+              <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform relative z-10" />
             </motion.a>
             <motion.a
               href="mailto:team@ethcatherders.com"
-              className="inline-flex items-center gap-2 px-7 py-3.5 border border-border rounded-full text-sm font-medium text-foreground hover:bg-secondary transition-all"
+              className="inline-flex items-center gap-2 px-8 py-4 border border-border rounded-full text-sm font-medium text-foreground hover:bg-secondary transition-all hover:border-accent/30"
               whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.97 }}
+              whileTap={{ scale: 0.95 }}
             >
               <Mail size={16} />
               team@ethcatherders.com
             </motion.a>
           </motion.div>
 
-          {/* Quick links */}
+          {/* Social links with animations */}
           <motion.div
-            className="flex flex-wrap items-center justify-center gap-4 mb-10"
+            className="flex flex-wrap items-center justify-center gap-5 mb-10"
             initial={{ opacity: 0 }}
             animate={inView ? { opacity: 1 } : {}}
             transition={{ duration: 0.6, delay: 0.4 }}
           >
-            <a href="https://www.linkedin.com/in/pooja-r-072899114" target="_blank" rel="noopener noreferrer" className="text-sm text-muted-foreground hover:text-accent transition-colors flex items-center gap-1">
-              <Linkedin size={14} /> LinkedIn
-            </a>
-            <span className="text-border">·</span>
-            <a href="https://github.com/poojaranjan" target="_blank" rel="noopener noreferrer" className="text-sm text-muted-foreground hover:text-accent transition-colors flex items-center gap-1">
-              <Github size={14} /> GitHub
-            </a>
-            <span className="text-border">·</span>
-            <a href="https://twitter.com/poojaranjan19" target="_blank" rel="noopener noreferrer" className="text-sm text-muted-foreground hover:text-accent transition-colors">
+            {[
+              { href: "https://www.linkedin.com/in/pooja-r-072899114", icon: Linkedin, label: "LinkedIn" },
+              { href: "https://github.com/poojaranjan", icon: Github, label: "GitHub" },
+            ].map((link, i) => (
+              <motion.a
+                key={link.label}
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sm text-muted-foreground hover:text-accent transition-colors flex items-center gap-1.5 group"
+                whileHover={{ y: -2, scale: 1.05 }}
+              >
+                <link.icon size={15} className="group-hover:text-accent transition-colors" />
+                {link.label}
+              </motion.a>
+            ))}
+            <motion.a
+              href="https://twitter.com/poojaranjan19"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm text-muted-foreground hover:text-accent transition-colors"
+              whileHover={{ y: -2, scale: 1.05 }}
+            >
               𝕏 Twitter
-            </a>
-            <span className="text-border">·</span>
-            <a href="https://farcaster.xyz/poojaranjan19" target="_blank" rel="noopener noreferrer" className="text-sm text-muted-foreground hover:text-accent transition-colors">
+            </motion.a>
+            <motion.a
+              href="https://farcaster.xyz/poojaranjan19"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm text-muted-foreground hover:text-accent transition-colors"
+              whileHover={{ y: -2, scale: 1.05 }}
+            >
               Farcaster
-            </a>
+            </motion.a>
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={inView ? { opacity: 1 } : {}}
+            initial={{ opacity: 0, y: 20 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.5 }}
           >
             <SocialIcons className="justify-center" />
