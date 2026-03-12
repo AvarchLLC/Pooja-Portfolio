@@ -251,18 +251,22 @@ const MediaSection = () => {
         {/* Three-column: ECH Resources, ACD, References */}
         <div className="grid md:grid-cols-3 gap-8 mb-16">
           <SectionBlock title="ECH Resources" icon={FileText} iconColor="text-accent" delay={0.1}>
-            <ul className="space-y-2">
-              {echResources.map((text, i) => (
-                <motion.li
+            <div className="space-y-2">
+              {echResources.map((item, i) => (
+                <motion.a
                   key={i}
-                  className="text-sm text-muted-foreground flex items-start gap-2 hover:text-foreground transition-colors cursor-default"
+                  href={item.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-start gap-2 p-2 text-sm text-muted-foreground hover:text-foreground transition-colors group"
                   whileHover={{ x: 4 }}
                 >
                   <span className="w-1 h-1 rounded-full bg-accent mt-2 flex-shrink-0" />
-                  {text}
-                </motion.li>
+                  <span className="flex-1">{item.text}</span>
+                  <ExternalLink size={11} className="opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0 mt-0.5 text-muted-foreground/50" />
+                </motion.a>
               ))}
-            </ul>
+            </div>
           </SectionBlock>
 
           <SectionBlock title="ACD Mentions" icon={Award} iconColor="text-accent-warm" delay={0.15}>
