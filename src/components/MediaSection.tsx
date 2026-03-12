@@ -33,11 +33,11 @@ const additionalMedia = [
 ];
 
 const communityMentions = [
-  "Gratitude to women who have made huge contributions",
-  "An introduction to EIPs with Tim Beiko from the Ethereum Foundation",
-  "Ethereum Network Upgrades Part 1: The Process",
-  "The Ethereum Government",
-  "Hudson Jameson Steps Down from Ethereum Core Developers",
+  { text: "Gratitude to Women Who Made Huge Contributions to Ethereum", url: "https://www.reddit.com/r/ethereum/comments/11lslel/gratitude_to_women_who_have_m" },
+  { text: "Ethereum Network Upgrades: The Process", url: "https://blog.metrika.co/ethereum-network-upgrades-part-1-the-process-7112ba57f3fb" },
+  { text: "Ethereum Governance Research — Galaxy Digital", url: "https://www.galaxy.com/insights/research/ethereum-governance" },
+  { text: "ProgPoW: The Ethereum Community Speaks", url: "https://hudsonjameson.com/posts/2020-03-02-progpow-the-ethereum-community-speak" },
+  { text: "Flashbots MEV Letter #91", url: "https://collective.flashbots.net/t/the-mev-letter-91/4988/1" },
 ];
 
 const references = [
