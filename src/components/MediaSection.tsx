@@ -18,9 +18,9 @@ const speakingEvents = [
 ];
 
 const interviews = [
-  { title: "Education and Organization for Ethereum — Unstoppable Domains", url: "#" },
-  { title: "MolochDAO Interview with Pooja Ranjan of Ethereum Cat Herders", url: "#" },
-  { title: "Meet The Herders: Pooja Ranjan", url: "#" },
+  { title: "An Introduction to EIPs with Tim Beiko — Unstoppable Domains", url: "https://unstoppabledomains.com/blog/an-introduction-to-eips-with-tim-beiko-from-the-eth" },
+  { title: "MolochDAO Interview with Pooja Ranjan of Ethereum Cat Herders", url: "https://medium.com/molochdao/molochdao-interview-with-pooja-ranjan-of-ethereum-cat" },
+  { title: "Meet The Herders Ep 1: Pooja Ranjan", url: "https://medium.com/ethereum-cat-herders/meet-the-herders-ep-1-pooja-ranjan-herder-in" },
 ];
 
 const additionalMedia = [
