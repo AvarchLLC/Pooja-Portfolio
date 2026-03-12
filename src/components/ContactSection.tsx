@@ -8,17 +8,32 @@ const ContactSection = () => {
   const inView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="contact" className="py-24" ref={ref}>
-      <div className="max-w-7xl mx-auto px-6 lg:px-10">
+    <section id="contact" className="py-28 relative" ref={ref}>
+      {/* Background glow */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] rounded-full bg-accent/5 blur-[120px]" />
+      </div>
+
+      <div className="max-w-7xl mx-auto px-6 lg:px-10 relative z-10">
         <div className="max-w-3xl mx-auto text-center">
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            animate={inView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.5 }}
+            className="flex items-center gap-3 mb-6 justify-center"
+          >
+            <div className="w-8 h-px line-gradient" />
+            <span className="text-xs font-semibold tracking-[0.2em] uppercase text-accent">Contact</span>
+            <div className="w-8 h-px line-gradient" />
+          </motion.div>
+
           <motion.h2
-            className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6"
-            style={{ fontFamily: "'Playfair Display', serif" }}
+            className="text-3xl md:text-5xl lg:text-6xl font-extrabold text-foreground mb-6 tracking-tight"
             initial={{ opacity: 0, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
           >
-            Have an interesting project?
+            Let's <span className="text-gradient">Connect</span>
           </motion.h2>
           <motion.p
             className="text-lg text-muted-foreground mb-10"
@@ -37,7 +52,7 @@ const ContactSection = () => {
           >
             <motion.a
               href="mailto:contact@etherworld.co"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-foreground text-background rounded-full text-sm font-medium hover:opacity-90 transition-opacity group"
+              className="inline-flex items-center gap-2 px-7 py-3.5 bg-gradient-primary text-primary-foreground rounded-full text-sm font-semibold group shadow-lg glow-accent"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.97 }}
             >
@@ -47,7 +62,7 @@ const ContactSection = () => {
             </motion.a>
             <motion.a
               href="mailto:team@ethcatherders.com"
-              className="inline-flex items-center gap-2 px-6 py-3 border border-foreground rounded-full text-sm font-medium text-foreground hover:bg-foreground hover:text-background transition-all"
+              className="inline-flex items-center gap-2 px-7 py-3.5 border border-border rounded-full text-sm font-medium text-foreground hover:bg-secondary transition-all"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.97 }}
             >
