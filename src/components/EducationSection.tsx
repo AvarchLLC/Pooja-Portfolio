@@ -55,16 +55,19 @@ const EducationSection = () => {
           {education.map((edu, i) => (
             <motion.div
               key={i}
-              initial={{ opacity: 0, y: 25 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: 0.1 + i * 0.1 }}
-              whileHover={{ y: -3 }}
+              initial={{ opacity: 0, y: 30, rotateX: 5 }}
+              animate={inView ? { opacity: 1, y: 0, rotateX: 0 } : {}}
+              transition={{ duration: 0.6, delay: 0.1 + i * 0.12 }}
+              whileHover={{ y: -5, scale: 1.02, transition: { duration: 0.2 } }}
               className="bg-glass rounded-2xl p-6 group"
             >
               <div className="flex items-start gap-4">
-                <div className="w-12 h-12 rounded-xl bg-secondary flex items-center justify-center flex-shrink-0 group-hover:glow-warm transition-shadow duration-500">
+                <motion.div
+                  className="w-12 h-12 rounded-xl bg-secondary flex items-center justify-center flex-shrink-0 group-hover:glow-warm transition-shadow duration-500"
+                  whileHover={{ rotate: 10 }}
+                >
                   <GraduationCap size={22} className="text-accent-warm" />
-                </div>
+                </motion.div>
                 <div>
                   <h3 className="text-lg font-bold text-foreground mb-1">{edu.degree}</h3>
                   <p className="text-sm text-muted-foreground mb-1">{edu.institution}</p>
