@@ -1,8 +1,10 @@
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import AboutSection from "@/components/AboutSection";
+import ExperienceSection from "@/components/ExperienceSection";
 import WorkSection from "@/components/WorkSection";
 import ProjectsSection from "@/components/ProjectsSection";
+import EducationSection from "@/components/EducationSection";
 import ContactSection from "@/components/ContactSection";
 import { motion } from "framer-motion";
 
@@ -11,8 +13,10 @@ const Index = () => (
     <Navbar />
     <HeroSection />
     <AboutSection />
+    <ExperienceSection />
     <WorkSection />
     <ProjectsSection />
+    <EducationSection />
     <ContactSection />
     <motion.footer
       className="py-8 text-center border-t border-border"
