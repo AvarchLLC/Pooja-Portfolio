@@ -312,9 +312,12 @@ const MediaSection = () => {
         >
           <h3 className="text-lg font-bold text-foreground mb-5">Community Shoutouts</h3>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
-            {communityMentions.map((text, i) => (
-              <motion.div
+            {communityMentions.map((item, i) => (
+              <motion.a
                 key={i}
+                href={item.url}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-sm text-muted-foreground flex items-start gap-2 bg-glass rounded-xl p-4 hover:text-foreground transition-all group"
                 whileHover={{ y: -3, scale: 1.01 }}
               >
@@ -323,8 +326,9 @@ const MediaSection = () => {
                   animate={{ scale: [1, 1.3, 1] }}
                   transition={{ duration: 2, repeat: Infinity, delay: i * 0.3 }}
                 />
-                {text}
-              </motion.div>
+                <span className="flex-1">{item.text}</span>
+                <ExternalLink size={11} className="opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0 mt-0.5 text-muted-foreground/50" />
+              </motion.a>
             ))}
           </div>
         </motion.div>
