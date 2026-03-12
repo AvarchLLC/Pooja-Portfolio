@@ -9,10 +9,15 @@ const mediaTalks = [
   { title: "Opportunities in Web3 @ ETHWMN", url: "https://www.youtube.com/watch?v=AbCzQtQWlSE" },
   { title: "Founder, EtherWorld & Herder-in-Chief, ECH", url: "https://www.youtube.com/watch?v=GpeOMZQCiLI" },
   { title: "The Importance of Education & Diversity in Protocol Development | EDCON 2025", url: "https://www.youtube.com/watch?v=uVj7JyTbLbg" },
-  { title: "Shaping Ethereum's Protocol Governance & Decision-Making | W3 Hub at Devcon 2024", url: "#" },
-  { title: "Elements of Protocol Governance | EDCON 2023", url: "#" },
-  { title: "Empowering Women in Ethereum: WiEP Introduction | Devcon 2024", url: "#" },
-  { title: "EIPs Simplified: History and Process Explained | Devcon SEA", url: "#" },
+  { title: "Shaping Ethereum's Protocol Governance & Decision-Making | W3 Hub at Devcon 2024", url: "https://www.youtube.com/watch?v=U_UN8FRqi5c" },
+  { title: "Elements of Protocol Governance | EDCON 2023", url: "https://www.youtube.com/watch?v=C1LMqQ10gSM" },
+  { title: "Empowering Women in Ethereum: WiEP Introduction | Devcon 2024", url: "https://www.youtube.com/watch?v=XCOdX5UmtU4" },
+  { title: "EIPs Simplified: History and Process Explained | Devcon SEA", url: "https://www.youtube.com/watch?v=wH76j1BDZkc" },
+  { title: "Ethereum Governance Discussion", url: "https://www.youtube.com/watch?v=C_zkU-f4tto" },
+  { title: "Ethereum Governance Talk", url: "https://www.youtube.com/watch?v=ZiLRcaZQ9ds" },
+  { title: "Ethereum Protocol Governance Talk", url: "https://www.youtube.com/watch?v=LdAlzFPaJpQ" },
+  { title: "Ethereum Governance Discussion", url: "https://youtu.be/WxtcBzv05zM" },
+  { title: "Ethereum Governance Talk", url: "https://www.youtube.com/watch?v=equE9PjNtZ0" },
 ];
 
 const peepanEIP = [
