@@ -41,10 +41,10 @@ const communityMentions = [
 ];
 
 const references = [
-  { title: "Yale Journal of Law & Technology", type: "Academic", url: "#" },
-  { title: "Pectra Upgrade: What's New — Etherscan", type: "Technical", url: "#" },
-  { title: "The MEV Letter #91", type: "Research", url: "#" },
-  { title: "ConsenSys Academy: Understanding Ethereum Network Upgrades", type: "Educational", url: "https://courses.consensys.net/courses/understanding-ethereum-network-upgrades-dencun-december-2023-january-february-2024" },
+  { title: "Yale Journal of Law & Technology", type: "Academic", url: "https://yjolt.org/blog/ethereum-20-and-prospect-reverse-mutation" },
+  { title: "Pectra Upgrade: What's New — Etherscan", type: "Technical", url: "https://info.etherscan.com/pectra-upgrade-whats-new-and-how-to-track-it-on-etherscan/" },
+  { title: "The MEV Letter #91 — Flashbots", type: "Research", url: "https://collective.flashbots.net/t/the-mev-letter-91/4988/1" },
+  { title: "ConsenSys: Understanding Ethereum", type: "Educational", url: "https://courses.consensys.net/courses/understanding-ethere" },
 ];
 
 const echResources = [
