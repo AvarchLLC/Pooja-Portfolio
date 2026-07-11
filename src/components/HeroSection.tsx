@@ -106,36 +106,9 @@ const HeroSection = () => {
             </motion.div>
 
             <motion.h1 variants={itemVariants} className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-[1.05] tracking-tight">
-              {/* Letter-by-letter reveal for first name */}
-              <span className="text-foreground inline-block overflow-hidden">
-                {"Pooja".split("").map((char, i) => (
-                  <motion.span
-                    key={i}
-                    className="inline-block"
-                    initial={{ y: 60, opacity: 0, rotateX: -90 }}
-                    animate={{ y: 0, opacity: 1, rotateX: 0 }}
-                    transition={{ duration: 0.6, delay: 0.3 + i * 0.08, ease: [0.22, 1, 0.36, 1] }}
-                    whileHover={{ scale: 1.15, color: "hsl(var(--accent))", transition: { duration: 0.15 } }}
-                  >
-                    {char}
-                  </motion.span>
-                ))}
-              </span>
+              <span className="text-foreground">Pooja</span>
               <br />
-              <span className="text-gradient inline-block overflow-hidden">
-                {"Ranjan".split("").map((char, i) => (
-                  <motion.span
-                    key={i}
-                    className="inline-block"
-                    initial={{ y: 60, opacity: 0, rotateX: -90 }}
-                    animate={{ y: 0, opacity: 1, rotateX: 0 }}
-                    transition={{ duration: 0.6, delay: 0.6 + i * 0.08, ease: [0.22, 1, 0.36, 1] }}
-                    whileHover={{ scale: 1.15, transition: { duration: 0.15 } }}
-                  >
-                    {char}
-                  </motion.span>
-                ))}
-              </span>
+              <span className="text-gradient">Ranjan</span>
             </motion.h1>
 
             {/* Typewriter subtitle */}
